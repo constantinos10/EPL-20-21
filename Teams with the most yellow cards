@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the CSV file
+file_path = 'EPL_20_21.csv'
+data = pd.read_csv(file_path)
+
+# Group data by 'Club' and sum the 'Yellow_Cards' for each team
+yellow_cards_by_team = data.groupby('Club')['Yellow_Cards'].sum().sort_values(ascending=False)
+
+# Create a bar chart
+plt.figure(figsize=(10, 6))
+yellow_cards_by_team.plot(kind='bar', color='yellow', alpha=0.7)
+plt.title('Yellow Cards by Team (EPL 20/21)')
+plt.xlabel('Team')
+plt.ylabel('Total Yellow Cards')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+
+# Show the chart
+plt.show()
