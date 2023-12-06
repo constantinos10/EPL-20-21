@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the CSV file into a DataFrame
+file_path = 'EPL_20_21.csv'
+df = pd.read_csv(file_path)
+
+# Filter the data to include only forwards (FW) with 10 or more goals
+fw_data = df[(df['Position'] == 'FW') & (df['Goals'] >= 10)]
+
+# Plotting the data
+plt.figure(figsize=(10, 6))
+plt.bar(fw_data['Name'], fw_data['Goals'], color='skyblue')
+plt.xlabel('Player Name')
+plt.ylabel('Goals')
+plt.title('Forwards with 10 or More Goals in EPL 20/21 Season')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+
+# Show the plot
+plt.show()
