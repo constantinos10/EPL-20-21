@@ -1,0 +1,24 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the CSV file into a DataFrame
+file_path = 'EPL_20_21.csv'  # Corrected file path
+df = pd.read_csv(file_path)
+
+# Sort the DataFrame by the 'Assists' column in descending order
+df_sorted = df.sort_values(by='Assists', ascending=False)
+
+# Select the top 10 players
+top_10_players = df_sorted.head(10)
+
+# Plotting the bar chart
+plt.figure(figsize=(10, 6))
+plt.bar(top_10_players['Name'], top_10_players['Assists'], color='blue')
+plt.xlabel('Player')
+plt.ylabel('Assists')
+plt.title('Top 10 Players with Most Assists in EPL 20/21 Season')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+
+# Show the plot
+plt.show()# EPL-20-21
